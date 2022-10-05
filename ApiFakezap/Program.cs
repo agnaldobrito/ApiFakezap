@@ -6,13 +6,13 @@ using ApiFakezap.Subscription;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IMessageReposiroty, MessageRepository>();
+builder.Services.AddSingleton<IChatRepository, ChatRepository>();
 
 builder.Services.AddInMemorySubscriptions();
 
 builder.Services.AddGraphQLServer()
     .AddType<Message>()
-    //.AddType<User>()
+    .AddType<Chat>()
     //.AddType<Group>()
 
     .AddQueryType()

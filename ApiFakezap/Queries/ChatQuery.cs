@@ -6,15 +6,15 @@ namespace ApiFakezap.Queries
     [ExtendObjectType(OperationTypeNames.Query)]
     public class ChatQuery
     {
-        private readonly IMessageReposiroty _repo;
-        public ChatQuery(IMessageReposiroty repo)
+        private readonly IChatRepository _repo;
+        public ChatQuery(IChatRepository repo)
         {
             _repo = repo;
         }
         [GraphQLDescription("Retorna o chat")]
-        public IEnumerable<Message> GetChat()
+        public IEnumerable<Message> GetChat(string idChat)
         {
-            IEnumerable<Message> messages = _repo.GetMessages();
+            IEnumerable<Message> messages = _repo.GetMessages(idChat);
             return messages;
         }
     }
